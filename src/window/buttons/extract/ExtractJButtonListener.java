@@ -1,19 +1,22 @@
+package window.buttons.extract;
+
+import utils.GifFrameExtractionUtils;
+import window.manager.GifFrameExtractorWindow;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-public class ExtractFramesListener implements ActionListener {
+public class ExtractJButtonListener implements ActionListener {
 
     private final JTextField gifPathField;
     private final JFrame frame;
-    private final JLabel folderLabel;
 
-    public ExtractFramesListener(JTextField gifPathField, JFrame frame, JLabel folderLabel) {
+    public ExtractJButtonListener(JTextField gifPathField, JFrame frame) {
         this.gifPathField = gifPathField;
         this.frame = frame;
-        this.folderLabel = folderLabel;
     }
 
     @Override
@@ -27,14 +30,14 @@ public class ExtractFramesListener implements ActionListener {
             return;
         }
 
-        File selectedFolder = (File) this.folderLabel.getClientProperty("selectedFolder");
+        File selectedFolder = (File) GifFrameExtractorWindow.folderLabel.getClientProperty("selectedFolder");
         if (selectedFolder == null) {
             JOptionPane.showMessageDialog(this.frame, "Please select a destination folder.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
-            GifFrameExtractor.extractFrames(gifFile, selectedFolder);
+            GifFrameExtractionUtils.extractFrames(gifFile, selectedFolder);
             JOptionPane.showMessageDialog(frame, "The frames have been extracted!", "Successful: ", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException exception) {
             JOptionPane.showMessageDialog(frame, "An internal error has occurred", "Error: ", JOptionPane.ERROR_MESSAGE);
