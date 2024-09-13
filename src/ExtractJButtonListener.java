@@ -1,7 +1,3 @@
-package window.buttons.extract;
-
-import utils.GifFrameExtractionUtils;
-import window.manager.GifFrameExtractorWindow;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,14 +26,14 @@ public class ExtractJButtonListener implements ActionListener {
             return;
         }
 
-        File selectedFolder = (File) GifFrameExtractorWindow.folderLabel.getClientProperty("selectedFolder");
+        File selectedFolder = (File) GifFrameExtractor.folderLabel.getClientProperty("selectedFolder");
         if (selectedFolder == null) {
             JOptionPane.showMessageDialog(this.frame, "Please select a destination folder.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
-            GifFrameExtractionUtils.extractFrames(gifFile, selectedFolder);
+            GifFrameExtractor.extractFrames(gifFile, selectedFolder);
             JOptionPane.showMessageDialog(frame, "The frames have been extracted!", "Successful: ", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException exception) {
             JOptionPane.showMessageDialog(frame, "An internal error has occurred", "Error: ", JOptionPane.ERROR_MESSAGE);

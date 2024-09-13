@@ -1,4 +1,4 @@
-package window.buttons.destiny;
+package destiny;
 
 import javax.swing.*;
 import java.io.File;
