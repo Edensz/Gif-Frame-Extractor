@@ -8,10 +8,12 @@ public class ExtractFramesListener implements ActionListener {
 
     private final JTextField gifPathField;
     private final JFrame frame;
+    private final JLabel folderLabel;
 
-    public ExtractFramesListener(JTextField gifPathField, JFrame frame) {
+    public ExtractFramesListener(JTextField gifPathField, JFrame frame, JLabel folderLabel) {
         this.gifPathField = gifPathField;
         this.frame = frame;
+        this.folderLabel = folderLabel;
     }
 
     @Override
@@ -25,8 +27,14 @@ public class ExtractFramesListener implements ActionListener {
             return;
         }
 
+        File selectedFolder = (File) this.folderLabel.getClientProperty("selectedFolder");
+        if (selectedFolder == null) {
+            JOptionPane.showMessageDialog(this.frame, "Please select a destination folder.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         try {
-            GifFrameExtractor.extractFrames(gifFile);
+            GifFrameExtractor.extractFrames(gifFile, selectedFolder);
             JOptionPane.showMessageDialog(frame, "The frames have been extracted!", "Successful: ", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException exception) {
             JOptionPane.showMessageDialog(frame, "An internal error has occurred", "Error: ", JOptionPane.ERROR_MESSAGE);
