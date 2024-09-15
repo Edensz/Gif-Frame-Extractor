@@ -3,4 +3,4 @@
 
 - Contributors: @Edensz
 - Release date: September 15th
-- Time spended: 6 hours
+- Time spent: 6 hours
