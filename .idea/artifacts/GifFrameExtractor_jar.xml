@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GifFrameExtractor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GifFrameExtractor_jar</output-path>
+    <root id="archive" name="GifFrameExtractor.jar">
+      <element id="module-output" name="GifFrameExtractor" />
+    </root>
+  </artifact>
+</component>

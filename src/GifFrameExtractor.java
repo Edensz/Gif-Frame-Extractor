@@ -1,6 +1,4 @@
 
-import destiny.DestinyJButtonListener;
-import destiny.DestinyJButtonUtils;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -38,7 +36,7 @@ public class GifFrameExtractor {
 
         JButton extractButton = new JButton("Extract Frames");
         extractButton.setHorizontalAlignment(JTextField.CENTER);
-        extractButton.addActionListener(new ExtractJButtonListener(gifPathField, frame));
+        extractButton.addActionListener(new ExtractFramesJButtonListener(gifPathField, frame));
 
         String userHome = System.getProperty("user.home");
         String documentsPath = userHome + File.separator + "Documents";
@@ -52,11 +50,11 @@ public class GifFrameExtractor {
 
         folderLabel = new JLabel();
         folderLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        DestinyJButtonUtils.changeDestiny(folderLabel, outputFolder);
+        changeFramesFolderDestiny(folderLabel, outputFolder);
 
         JButton folderSelectionButton = new JButton("Select the destination folder...");
         folderSelectionButton.setHorizontalAlignment(SwingConstants.CENTER);
-        folderSelectionButton.addActionListener(new DestinyJButtonListener(folderLabel, frame));
+        folderSelectionButton.addActionListener(new ChangeDestinyJButtonListener(folderLabel, frame));
 
         Component[] components = {routeLabel, gifPathField, folderLabel, folderSelectionButton, extractButton};
         for (Component component : components) {
@@ -127,7 +125,7 @@ public class GifFrameExtractor {
         }
     }
 
-    public static String getFileNameWithoutExtension(String filePath) {
+    private static String getFileNameWithoutExtension(String filePath) {
         File file = new File(filePath);
 
         String fileNameWithExtension = file.getName();
@@ -137,5 +135,10 @@ public class GifFrameExtractor {
         } else {
             return fileNameWithExtension;
         }
+    }
+
+    public static void changeFramesFolderDestiny(JLabel folderLabel, File file) {
+        folderLabel.setText(file.getAbsolutePath());
+        folderLabel.putClientProperty("selectedFolder", file);
     }
 }

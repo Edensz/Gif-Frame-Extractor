@@ -1,16 +1,14 @@
-package destiny;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class DestinyJButtonListener implements ActionListener {
+public class ChangeDestinyJButtonListener implements ActionListener {
 
     private final JLabel folderLabel;
     private final JFrame frame;
 
-    public DestinyJButtonListener(JLabel folderLabel, JFrame frame) {
+    public ChangeDestinyJButtonListener(JLabel folderLabel, JFrame frame) {
         this.folderLabel = folderLabel;
         this.frame = frame;
     }
@@ -23,7 +21,7 @@ public class DestinyJButtonListener implements ActionListener {
         int result = folderChooser.showOpenDialog(this.frame);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFolder  = folderChooser.getSelectedFile();
-            DestinyJButtonUtils.changeDestiny(this.folderLabel, selectedFolder);
+            GifFrameExtractor.changeFramesFolderDestiny(this.folderLabel, selectedFolder);
         }
     }
 

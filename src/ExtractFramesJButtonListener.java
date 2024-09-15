@@ -5,12 +5,11 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-public class ExtractJButtonListener implements ActionListener {
-
+public class ExtractFramesJButtonListener implements ActionListener {
     private final JTextField gifPathField;
     private final JFrame frame;
 
-    public ExtractJButtonListener(JTextField gifPathField, JFrame frame) {
+    public ExtractFramesJButtonListener(JTextField gifPathField, JFrame frame) {
         this.gifPathField = gifPathField;
         this.frame = frame;
     }
