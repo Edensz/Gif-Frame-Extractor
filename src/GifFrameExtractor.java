@@ -22,7 +22,7 @@ public class GifFrameExtractor {
         JFrame frame = new JFrame("GIF Frame Extractor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(850, 500);
-        frame.setLocation(350, 175);
+        frame.setLocation(500, 200);
         frame.setLayout(new BorderLayout());
 
         JPanel panel = new JPanel();
